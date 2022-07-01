@@ -38,4 +38,44 @@ class SLL{
                 temp->next = newNode;
             }
         }
+        void insert_node_inMiddle(int data, int pos){
+            SLLNode *newNode = new SLLNode(data);
+            SLLNode * temp = head;
+            if(temp==nullptr)
+                head = newNode;
+            else {
+                int count = 1;
+                while(count<pos) {
+                    count++;
+                    temp = temp->next;
+                }
+                newNode->next = temp->next;
+                temp->next = newNode;
+            }
+        }
+};
+
+void display(SLLNode *head){
+    SLLNode *temp = head;
+    while(temp!=NULL) {
+        cout<<temp->data<<" ";
+        temp = temp->next;
+    }
+}
+
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        SLL *list = new SLL();
+        int n;
+        cin>>n;
+        for(int i=0;i<n;i++){
+            int data;
+            cin>>data;
+            list->insert_node_atBeginning(data);
+        }
+        cout<<"Linked List after bed"<<"\n";
+        display(list->head);
+    }
 }
