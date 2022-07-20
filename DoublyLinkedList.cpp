@@ -15,7 +15,7 @@ void display(Node *head){
 }
 
 void insertAtBeginning(Node **head,int data){
-    Node *newNode = (Node *)malloc(sizeof(struct Node));
+    Node *newNode = (Node *)malloc(sizeof(Node));
     newNode->data = data;
     newNode->next = *head;
     (*head)->prev = newNode;

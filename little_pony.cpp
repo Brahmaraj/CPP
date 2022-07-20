@@ -18,10 +18,14 @@ int main(){
         sum[i] = sum[i]+sum[i-1];
     int ans = 0;
     for(int i=0;i<m;i++){
-        if(B[i]>sum[n-1])
+        if(B[i]>sum[n-1]){
             ans = n; 
-        else if(B[i]<sum[0])
+            goto pushAns;
+            }
+        else if(B[i]<sum[0]){
             ans = 0;
+            goto pushAns;
+            }
         else {
             int l = 0;
             int h = n-1;
@@ -29,15 +33,15 @@ int main(){
                 int mid = l + (h-1)/2;
                 if(sum[mid]==B[i]) {
                     ans = mid+1;
-                    break;
+                    goto pushAns;
                 }
                 else if(sum[mid]>B[i] && sum[mid-1]<B[i]){
                     ans = mid;
-                    break;
+                    goto pushAns;
                 }
                 else if(sum[mid]<B[i] && sum[mid+1]>B[i]) {
                     ans = mid+1;
-                    break;
+                    goto pushAns;
                 }
                 else if(sum[mid]>B[i])
                     h = mid-1;
@@ -45,6 +49,7 @@ int main(){
                     l = mid+1;
             }
         }
+        pushAns:
         cout<<endl;
         cout<<ans<<"\n";
         result[i] = ans;
